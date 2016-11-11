@@ -5,6 +5,7 @@ public class BallHandler : MonoBehaviour {
 
     public bool ballBeenHit;
     private IEnumerator coroutine;
+    public GameObject ballThrower;
 
     // Use this for initialization
     void Start () {
@@ -12,6 +13,7 @@ public class BallHandler : MonoBehaviour {
 
         coroutine = DestroyBall(1.0f);
         StartCoroutine(coroutine);
+
     }
 
     // Update is called once per frame
@@ -32,6 +34,8 @@ public class BallHandler : MonoBehaviour {
         if (ballBeenHit)
         {
             yield return new WaitForSeconds(time * 5);
+            ballThrower = GameObject.Find("BallSpawnPoint");
+            ballThrower.GetComponent<Tracker>().distance = Vector3.Distance(ballThrower.GetComponent<Transform>().position, transform.position);
             Debug.Log("Trying to destroy it now");
             Destroy(gameObject);
         }
