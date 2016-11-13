@@ -11,7 +11,7 @@ public class BallHandler : MonoBehaviour {
     void Start () {
         ballBeenHit = false;
 
-        coroutine = DestroyBall(1.0f);
+        coroutine = DestroyBall(1.6f);
         StartCoroutine(coroutine);
 
     }
@@ -23,8 +23,7 @@ public class BallHandler : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        //ballBeenHit = true;
-        Debug.Log("Velocity magnitude: " + col.relativeVelocity.magnitude); //This will give a number which decides how much vibration we should use
+        ballBeenHit = true;
     }
 
     private IEnumerator DestroyBall(float time)
@@ -33,7 +32,7 @@ public class BallHandler : MonoBehaviour {
         yield return new WaitForSeconds(time);
         if (ballBeenHit)
         {
-            yield return new WaitForSeconds(time * 5);
+            yield return new WaitForSeconds(time * 3);
             ballThrower = GameObject.Find("BallSpawnPoint");
             ballThrower.GetComponent<Tracker>().distance = Vector3.Distance(ballThrower.GetComponent<Transform>().position, transform.position);
             Debug.Log("Trying to destroy it now");
