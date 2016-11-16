@@ -10,15 +10,13 @@ public class BallThrower : MonoBehaviour {
     private bool ballSpawned;
     private IEnumerator coroutine;
 
-    private SteamVR_TrackedObject trackedObject;
+    public SteamVR_TrackedObject controller;
     private SteamVR_Controller.Device device;
-    private Valve.VR.EVRButtonId triggerButton = Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger;
-
+   
 
     // Use this for initialization
     void Start () {
-        trackedObject = GetComponent<SteamVR_TrackedObject>();
-        device = SteamVR_Controller.Input((int)trackedObject.index);
+      // controller = GetComponent<SteamVR_TrackedObject>();
         ballVelocity = 8.0f;
         ballSpawned = false;
     }
@@ -26,12 +24,11 @@ public class BallThrower : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        
+           device = SteamVR_Controller.Input((int)controller.index);
 
-        if (!ballSpawned && device.GetPress(triggerButton) ) //Needs to be a button on the controller!!! Will implement when I have the Vive.
+        if (!ballSpawned && device.GetPress(SteamVR_Controller.ButtonMask.Trigger) ) //Needs to be a button on the controller!!! Will implement when I have the Vive.
         {
-            Debug.Log("Trigger Pressed");
-                
+                          
             coroutine = SpawnTimer(1.0f);
             StartCoroutine(coroutine);
             ballClone = (GameObject) Instantiate(baseball, transform.position, transform.rotation);

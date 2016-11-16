@@ -186,7 +186,7 @@ public class SteamVR_Camera : MonoBehaviour
 			camera.cullingMask = 0;
 			camera.eventMask = 0;
 			camera.orthographic = true;
-			camera.orthographicSize = 1;
+            camera.orthographicSize = 1;
 			camera.nearClipPlane = 0;
 			camera.farClipPlane = 1;
 			camera.useOcclusionCulling = false;
