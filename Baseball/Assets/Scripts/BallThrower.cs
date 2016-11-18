@@ -26,7 +26,7 @@ public class BallThrower : MonoBehaviour {
     {
            device = SteamVR_Controller.Input((int)controller.index);
 
-        if (!ballSpawned && device.GetPress(SteamVR_Controller.ButtonMask.Trigger) ) //Needs to be a button on the controller!!! Will implement when I have the Vive.
+        if (!ballSpawned && device.GetPress(SteamVR_Controller.ButtonMask.Trigger))
         {
                           
             coroutine = SpawnTimer(1.0f);
