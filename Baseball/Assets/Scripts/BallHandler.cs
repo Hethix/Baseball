@@ -11,7 +11,7 @@ public class BallHandler : MonoBehaviour {
     void Start () {
         ballBeenHit = false;
 
-        coroutine = DestroyBall(1.6f);
+        coroutine = DestroyBall(1.2f);
         StartCoroutine(coroutine);
 
     }
@@ -28,19 +28,16 @@ public class BallHandler : MonoBehaviour {
 
     private IEnumerator DestroyBall(float time)
     {
-        Debug.Log("Started DestroyBalll");
         yield return new WaitForSeconds(time);
         if (ballBeenHit)
         {
             yield return new WaitForSeconds(time * 3);
             ballThrower = GameObject.Find("BallSpawnPoint");
             ballThrower.GetComponent<Tracker>().distance = Vector3.Distance(ballThrower.GetComponent<Transform>().position, transform.position);
-            Debug.Log("Trying to destroy it now");
             Destroy(gameObject);
         }
         else
         {
-            Debug.Log("Trying to destroy it now");
             Destroy(gameObject);
         }
     }

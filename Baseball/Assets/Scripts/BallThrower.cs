@@ -16,8 +16,8 @@ public class BallThrower : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-      // controller = GetComponent<SteamVR_TrackedObject>();
-        ballVelocity = 8.0f;
+        //controller = GetComponent<SteamVR_TrackedObject>();
+        ballVelocity = 6.2f;
         ballSpawned = false;
     }
 
