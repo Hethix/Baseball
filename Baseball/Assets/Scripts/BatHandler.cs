@@ -10,7 +10,6 @@ public class BatHandler : MonoBehaviour {
     public GameObject lastBall;
 
     public SteamVR_TrackedObject controller;
-    private SteamVR_Controller.Device device;
 
     public bool haptic1;
     public bool haptic2;
@@ -26,7 +25,6 @@ public class BatHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        device = SteamVR_Controller.Input((int)controller.index);
 
         velocity = (transform.position - previousPosition) / Time.deltaTime;
         previousPosition = transform.position;
